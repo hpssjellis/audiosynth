@@ -131,7 +131,7 @@ function myNotGo1F(myValue){     // simplifies sending info to the photon
 
 <body onKeyDown = "{
 
-//alert(String.fromCharCode(event.keyCode))
+
    	if(String.fromCharCode(event.keyCode) == 'A'){ ws.send('A')  }  
    	if(String.fromCharCode(event.keyCode) == 'B'){ ws.send('B')  }  
    	if(String.fromCharCode(event.keyCode) == 'C'){ ws.send('C')  }  
@@ -170,19 +170,19 @@ function myNotGo1F(myValue){     // simplifies sending info to the photon
    	if(String.fromCharCode(event.keyCode) == '8'){ ws.send('8')  }  
    	if(String.fromCharCode(event.keyCode) == '9'){ ws.send('9')  }  
    	if(String.fromCharCode(event.keyCode) == '0'){ ws.send('0')  }
-   	if(String.fromCharCode(event.keyCode) == '½'){ ws.send('½')  }     //   -
-   	if(String.fromCharCode(event.keyCode) == '»'){ ws.send('»')  }    //   =
+  	if(String.fromCharCode(event.keyCode) == '½'){ ws.send('½')  }     //   -
+  	if(String.fromCharCode(event.keyCode) == '»'){ ws.send('»')  }     //   =
    	if(String.fromCharCode(event.keyCode) == ' '){ ws.send(' ')  }    
   
   
    	if(String.fromCharCode(event.keyCode) == '¿'){ ws.send('¿')  }     //    /
-   	if(String.fromCharCode(event.keyCode) == 'Ü'){ ws.send('Ü')  }   //   \ 
-   	if(String.fromCharCode(event.keyCode) == '¼'){ ws.send('¼')  }    //   ,
-   	if(String.fromCharCode(event.keyCode) == 'Û'){ ws.send('Û')  }      //   [
-   	if(String.fromCharCode(event.keyCode) == 'Ý'){ ws.send('Ý')  }  //   ] 
-   //	if(String.fromCharCode(event.keyCode) == '¾'){ ws.send('¾')  }     // .
-   	if(String.fromCharCode(event.keyCode) == 'Þ){ ws.send('Þ')  }      //  '
-   	if(String.fromCharCode(event.keyCode) == 'º'){ ws.send('º')  }   //  ;
+   	if(String.fromCharCode(event.keyCode) == 'Ü'){ ws.send('Ü')  }     //   \ 
+   	if(String.fromCharCode(event.keyCode) == '¼'){ ws.send('¼')  }     //   ,
+   	if(String.fromCharCode(event.keyCode) == 'Û'){ ws.send('Û')  }     //   [
+   	if(String.fromCharCode(event.keyCode) == 'Ý'){ ws.send('Ý')  }     //   ] 
+   	if(String.fromCharCode(event.keyCode) == '¾'){ ws.send('¾')  }     // .
+   	if(String.fromCharCode(event.keyCode) == 'Þ'){ ws.send('Þ')   }     //  '
+   	if(String.fromCharCode(event.keyCode) == 'º'){ ws.send('º')  }     //  ;
    	
    	
  
@@ -294,9 +294,9 @@ ws.onmessage = function (event) {
     if (event.data == 'N'){  acoustic.play('G', 3, 6); }
     if (event.data == 'M'){  acoustic.play('G#', 3, 6); }
     
-     if (event.data == '¼'){  acoustic.play('A', 4, 6); }   //  ,
+    if (event.data == '¼'){  acoustic.play('A', 4, 6); }   //  ,
     if (event.data == '¾'){  acoustic.play('A#', 4, 6); }   //   .
-   if (event.data == '¿'){  acoustic.play('B', 4, 6); }   //    /
+    if (event.data == '¿'){  acoustic.play('B', 4, 6); }   //    /
     
     
     if (event.data == 'A'){  acoustic.play('C', 4, 6); }
@@ -326,7 +326,7 @@ ws.onmessage = function (event) {
     if (event.data == 'O'){  acoustic.play('A', 6, 6); }
     if (event.data == 'P'){  acoustic.play('A#', 6, 6); }
     if (event.data == 'Û'){  acoustic.play('B', 6, 6); }   // [
-    if (event.data == 'Ý'){  acoustic.play('C', 6, 6); } // ]  duplicate
+    if (event.data == 'Ý'){  acoustic.play('C', 6, 6); }   // ]  duplicate
     
     
     
