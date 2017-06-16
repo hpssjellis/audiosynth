@@ -24,18 +24,18 @@ wss.myBroadcast = function(data) {
     
     
      this.clients[i].send(data);
-     console.log('sent to client[' + i + '] ' + data);
+    // console.log('sent to client[' + i + '] ' + data);
   }
 };
 
 
 wss.on("connection", function(ws) {
   var id = setInterval(function() {
-      console.log("DO NOT send ping: C")
+      console.log("server runningC")
       //ws.send(JSON.stringify(new Date()), function() {  })
       //ws.send("C",function() {  })
     
-  }, 12000)   
+  }, 30000)   
   
   
   console.log("websocket connection open " )
