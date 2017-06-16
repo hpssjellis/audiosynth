@@ -298,12 +298,14 @@ ws.onmessage = function (event) {
     //if (myInterval ){myNote += 'z'}
     for (myLoop = 1; myLoop <= myInterval/500; myLoop++){
        myNote += 'z'
+       document.myCounter ++;
+       if (document.myCounter % 4 == 0){myNote += '| '}
+       if (document.myCounter % 20 == 0){myNote += ']\n'}
     }
+    myNote += ' '
     
     document.myCounter ++;
     if (document.myCounter % 4 == 0){myNote += '| '}
-    
-    
     if (document.myCounter % 20 == 0){myNote += ']\n'}
     
     //  ]
