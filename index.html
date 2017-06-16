@@ -81,7 +81,8 @@
 <br>
 
 no keyboard ability to play 
-<input type=button value="A#4" onclick="{ws.send('a')}">
+<input type=button value="A#3" onclick="{ws.send('a')}">
+<input type=button value="B4" onclick="{ws.send('b')}">
 <br>
 
 
@@ -142,6 +143,7 @@ no keyboard ability to play
    	if(String.fromCharCode(event.keyCode) == 'Þ'){ ws.send('Þ')   }     //  '
    	if(String.fromCharCode(event.keyCode) == 'º'){ ws.send('º')  }     //  ;
    	if(String.fromCharCode(event.keyCode) == 'a'){ ws.send('a')  }     //  ;
+   	if(String.fromCharCode(event.keyCode) == 'b'){ ws.send('b')  }     //  ;
    	
    	
  
@@ -197,70 +199,76 @@ no keyboard ability to play
 var host = location.origin.replace(/^http/, 'ws')
 var ws = new WebSocket(host);
 ws.onmessage = function (event) {
-    document.getElementById('myDiv1').innerHTML = event.data + '<br>'+document.getElementById('myDiv1').innerHTML; 
-    //alert(event.data)
-    if (event.data == 'Z'){  acoustic.play('C', 3, 6); }
-    if (event.data == 'X'){  acoustic.play('C#', 3, 6); }
-    if (event.data == 'C'){  acoustic.play('D', 3, 6); }
-    if (event.data == 'V'){  acoustic.play('D#', 3, 6); }
-    if (event.data == 'B'){  acoustic.play('E', 3, 6); }
-    if (event.data == 'N'){  acoustic.play('F', 3, 6); }
-    if (event.data == 'M'){  acoustic.play('F#', 3, 6); }
-    if (event.data == '¼'){  acoustic.play('G', 3, 6); }   //  ,
+ myNote = '----'
+ 
+ 
+    if (event.data == 'Z'){  acoustic.play('C', 3, 6);   myNote ='C3' ;}
+    if (event.data == 'X'){  acoustic.play('C#', 3, 6);  myNote ='C#3' ;}
+    if (event.data == 'C'){  acoustic.play('D', 3, 6);   myNote ='D3' ;}
+    if (event.data == 'V'){  acoustic.play('D#', 3, 6);  myNote ='D#3' ;}
+    if (event.data == 'B'){  acoustic.play('E', 3, 6);   myNote ='E3' ;}
+    if (event.data == 'N'){  acoustic.play('F', 3, 6);   myNote ='F3' ;  }
+    if (event.data == 'M'){  acoustic.play('F#', 3, 6);  myNote ='F#3' ; }
+    if (event.data == '¼'){  acoustic.play('G', 3, 6);   myNote ='G3' ; }   //  ,
     
-    if (event.data == '¾'){  acoustic.play('G#', 3, 6); }   //   .
-    if (event.data == '¿'){  acoustic.play('A', 3, 6); }   //    /
-    if (event.data == 'a'){  acoustic.play('A#', 4, 6); }   //   a
-    if (event.data == ' '){  acoustic.play('B', 4, 6); }
+    if (event.data == '¾'){  acoustic.play('G#', 3, 6);  myNote ='G#3' ; }   //   .
+    if (event.data == '¿'){  acoustic.play('A', 3, 6);   myNote ='A3' ; }   //    /
+    if (event.data == 'a'){  acoustic.play('A#', 3, 6);  myNote ='A#3' ; }   //   a
+    if (event.data == ' '){  acoustic.play('B', 3, 6);   myNote ='B3' ; }
     
     
-    if (event.data == 'A'){  acoustic.play('C', 4, 6); }
-    if (event.data == 'S'){  acoustic.play('C#', 4, 6); }
-    if (event.data == 'D'){  acoustic.play('D', 4, 6); }
-    if (event.data == 'F'){  acoustic.play('D#', 4, 6); }
-    if (event.data == 'G'){  acoustic.play('E', 4, 6); }
-    if (event.data == 'H'){  acoustic.play('F', 4, 6); }
-    if (event.data == 'J'){  acoustic.play('F#', 4, 6); }
-    if (event.data == 'K'){  acoustic.play('G', 4, 6); }
-    if (event.data == 'L'){  acoustic.play('G#', 4, 6); }
+    if (event.data == 'A'){  acoustic.play('C', 4, 6);   myNote ='C4' ; }
+    if (event.data == 'S'){  acoustic.play('C#', 4, 6);  myNote ='C4' ; }
+    if (event.data == 'D'){  acoustic.play('D', 4, 6);   myNote ='D4' ; }
+    if (event.data == 'F'){  acoustic.play('D#', 4, 6);  myNote ='D#4' ; }
+    if (event.data == 'G'){  acoustic.play('E', 4, 6);   myNote ='E4' ; }
+    if (event.data == 'H'){  acoustic.play('F', 4, 6);   myNote ='F4' ; }
+    if (event.data == 'J'){  acoustic.play('F#', 4, 6);  myNote ='F#4' ; }
+    if (event.data == 'K'){  acoustic.play('G', 4, 6);   myNote ='G4' ; }
+    if (event.data == 'L'){  acoustic.play('G#', 4, 6);  myNote ='G#4' ; }
     
 
-    if (event.data == 'º'){  acoustic.play('A', 4, 6); }      //    ;
-    if (event.data == 'Þ'){  acoustic.play('A#', 4, 6); }     //    '
+    if (event.data == 'º'){  acoustic.play('A', 4, 6);   myNote ='A4' ; }      //    ;
+    if (event.data == 'Þ'){  acoustic.play('A#', 4, 6);  myNote ='A#4' ; }     //    '
+   if (event.data == 'b'){  acoustic.play('B', 4, 6);  myNote ='' ; }     //    ---
     
     
-    if (event.data == 'Q'){  acoustic.play('C', 5, 6); }
-    if (event.data == 'W'){  acoustic.play('C#', 5, 6); }
-    if (event.data == 'E'){  acoustic.play('D', 5, 6); }
-    if (event.data == 'R'){  acoustic.play('D#', 5, 6); }
-    if (event.data == 'T'){  acoustic.play('E', 5, 6); }
-    if (event.data == 'Y'){  acoustic.play('F', 5, 6); }
-    if (event.data == 'U'){  acoustic.play('F#', 5, 6); }
-    if (event.data == 'I'){  acoustic.play('G', 5, 6); }
-    if (event.data == 'O'){  acoustic.play('G#', 5, 6); }
+    if (event.data == 'Q'){  acoustic.play('C', 5, 6);   myNote ='C5' ; }
+    if (event.data == 'W'){  acoustic.play('C#', 5, 6);  myNote ='C#5' ; }
+    if (event.data == 'E'){  acoustic.play('D', 5, 6);   myNote ='D5' ; }
+    if (event.data == 'R'){  acoustic.play('D#', 5, 6);  myNote ='D#5' ; }
+    if (event.data == 'T'){  acoustic.play('E', 5, 6);   myNote ='E5' ; }
+    if (event.data == 'Y'){  acoustic.play('F', 5, 6);   myNote ='F5' ; }
+    if (event.data == 'U'){  acoustic.play('F#', 5, 6);  myNote ='F#5' ; }
+    if (event.data == 'I'){  acoustic.play('G', 5, 6);   myNote ='G5' ; }
+    if (event.data == 'O'){  acoustic.play('G#', 5, 6);  myNote ='G#5' ; }
             
-    if (event.data == 'P'){  acoustic.play('A', 5, 6); }
-    if (event.data == 'Û'){  acoustic.play('A#', 5, 6); }    // [
-    if (event.data == 'Ý'){  acoustic.play('B', 5, 6); }     // ]
-    if (event.data == 'Ü'){  acoustic.play('C', 5, 6); }     // \
+    if (event.data == 'P'){  acoustic.play('A', 5, 6);   myNote ='A5' ; }
+    if (event.data == 'Û'){  acoustic.play('A#', 5, 6);  myNote ='A#5' ; }    // [
+    if (event.data == 'Ý'){  acoustic.play('B', 5, 6);   myNote ='B5' ; }     // ]
+    if (event.data == 'Ü'){  acoustic.play('C', 6, 6);   myNote ='C6' ; }     // \  DUPLICATE
     
     
     
     
-    if (event.data == 'À'){  acoustic.play('C', 6, 6); }      //    `
-    if (event.data == '1'){  acoustic.play('C#', 6, 6); }
-    if (event.data == '2'){  acoustic.play('D', 6, 6); }
-    if (event.data == '3'){  acoustic.play('D#', 6, 6); }
-    if (event.data == '4'){  acoustic.play('E', 6, 6); }
-    if (event.data == '5'){  acoustic.play('F', 6, 6); }
-    if (event.data == '6'){  acoustic.play('F#', 6, 6); }
-    if (event.data == '7'){  acoustic.play('G', 6, 6); }
-    if (event.data == '8'){  acoustic.play('G#', 6, 6); }
-    if (event.data == '9'){  acoustic.play('A', 6, 6); }
-    if (event.data == '0'){  acoustic.play('A#', 6, 6); }
-    if (event.data == '½'){  acoustic.play('B', 6, 6); }     // -
-    if (event.data == '»'){  acoustic.play('C', 7, 6); }   // =
-
+    if (event.data == 'À'){  acoustic.play('C', 6, 6);  myNote ='C6' ; }      //    `
+    if (event.data == '1'){  acoustic.play('C#', 6, 6);  myNote ='C#6' ; }
+    if (event.data == '2'){  acoustic.play('D', 6, 6);  myNote ='D6' ; }
+    if (event.data == '3'){  acoustic.play('D#', 6, 6);  myNote ='D#6' ; }
+    if (event.data == '4'){  acoustic.play('E', 6, 6);  myNote ='E6' ; }
+    if (event.data == '5'){  acoustic.play('F', 6, 6);  myNote ='F6' ; }
+    if (event.data == '6'){  acoustic.play('F#', 6, 6);  myNote ='F#6' ; }
+    if (event.data == '7'){  acoustic.play('G', 6, 6);  myNote ='G6' ; }
+    if (event.data == '8'){  acoustic.play('G#', 6, 6);  myNote ='G#6' ; }
+    if (event.data == '9'){  acoustic.play('A', 6, 6);  myNote ='A6' ; }
+    if (event.data == '0'){  acoustic.play('A#', 6, 6);  myNote ='A#6' ; }
+    if (event.data == '½'){  acoustic.play('B', 6, 6);  myNote ='B6' ; }     // -
+    if (event.data == '»'){  acoustic.play('C', 7, 6);  myNote ='C7' ; }   // =
+   
+   
+   
+   document.getElementById('myDiv1').innerHTML = 'Pressed = '+event.data + ', note = ' + myNote +'<br>'+document.getElementById('myDiv1').innerHTML; 
+    //alert(event.data)
 };
 
  ws.onconnection = function (event) {
