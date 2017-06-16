@@ -1,0 +1,398 @@
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>abcjs demo</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link href="abcjs-midi.css" media="all" rel="stylesheet" type="text/css" />
+	<script src="abcjs_editor_midi_3.1.1-min.js" type="text/javascript"></script>
+	<style>
+		.abcjs-inline-midi {
+			max-width: 740px;
+		}
+	</style>
+
+<title>Particle.io web page control of the Core or Photon using a hacked websocket.<br> Not very secure but it works </title>
+
+
+<script src="audiosynth.js"></script>
+<script>
+   acoustic = Synth.createInstrument('acoustic'); // play with your acoustic guitar!
+   piano = Synth.createInstrument('piano'); // play with your acoustic guitar!
+   organ = Synth.createInstrument('organ'); // play with your acoustic guitar!
+   edm = Synth.createInstrument('edm'); // play with your acoustic guitar!
+
+    
+    
+</script>
+
+
+
+<!--
+<input type=button value="acoustic.play('C', 4, 6)" onclick="{
+
+ acoustic.play('C', 4, 6);
+
+}"><br>
+
+
+
+
+<input type=button value="piano.play('C', 4, 2)" onclick="{
+
+ piano.play('C', 4, 2);
+
+}"><br>
+
+
+
+
+
+
+
+<input type=button value="organ.play('C', 4, 2)" onclick="{
+
+ organ.play('C', 4, 2);
+
+}"><br>
+
+
+
+
+
+
+
+<input type=button value="edm.play('C', 4, 2)" onclick="{
+
+ edm.play('C', 4, 2);
+
+}"><br><br>
+
+
+
+-->
+
+<h2 aligne=center>MusicChat use your keypad</h2>
+
+<input type=button value="C4" onclick="{ws.send('A')}">
+<input type=button value="#C4" onclick="{ws.send('S')}">
+<input type=button value="D4" onclick="{ws.send('D')}">
+<input type=button value="D#4" onclick="{ws.send('F')}">
+<input type=button value="E4" onclick="{ws.send('D')}">
+<input type=button value="F4" onclick="{ws.send('F')}">
+<input type=button value="F#4" onclick="{ws.send('G')}">
+<input type=button value="G4" onclick="{ws.send('H')}">
+<input type=button value="G#4" onclick="{ws.send('J')}">
+<input type=button value="A5" onclick="{ws.send('L')}">
+<input type=button value="A#5" onclick="{ws.send(';')}">
+<input type=button value="B5" onclick="{ws.send(';')}">    
+<input type=button value="C5" onclick="{ws.send('Q')}">
+
+<br>
+
+no keyboard ability to play 
+<input type=button value="A#3" onclick="{ws.send('a')}">
+<input type=button value="B4" onclick="{ws.send('b')}">
+<br>
+
+
+</head>
+
+<body onKeyDown = "{
+
+
+   	if(String.fromCharCode(event.keyCode) == 'A'){ ws.send('A')  }  
+   	if(String.fromCharCode(event.keyCode) == 'B'){ ws.send('B')  }  
+   	if(String.fromCharCode(event.keyCode) == 'C'){ ws.send('C')  }  
+   	if(String.fromCharCode(event.keyCode) == 'D'){ ws.send('D')  }  
+   	if(String.fromCharCode(event.keyCode) == 'E'){ ws.send('E')  }  
+   	if(String.fromCharCode(event.keyCode) == 'F'){ ws.send('F')  }  
+   	if(String.fromCharCode(event.keyCode) == 'G'){ ws.send('G')  }  
+   	if(String.fromCharCode(event.keyCode) == 'H'){ ws.send('H')  }  
+   	if(String.fromCharCode(event.keyCode) == 'I'){ ws.send('I')  }  
+   	if(String.fromCharCode(event.keyCode) == 'J'){ ws.send('J')  }  
+   	if(String.fromCharCode(event.keyCode) == 'K'){ ws.send('K')  }  
+   	if(String.fromCharCode(event.keyCode) == 'L'){ ws.send('L')  }  
+   	if(String.fromCharCode(event.keyCode) == 'M'){ ws.send('M')  }  
+   	if(String.fromCharCode(event.keyCode) == 'N'){ ws.send('N')  }  
+   	if(String.fromCharCode(event.keyCode) == 'O'){ ws.send('O')  }  
+   	if(String.fromCharCode(event.keyCode) == 'P'){ ws.send('P')  }  
+   	if(String.fromCharCode(event.keyCode) == 'Q'){ ws.send('Q')  }  
+   	if(String.fromCharCode(event.keyCode) == 'R'){ ws.send('R')  }  
+   	if(String.fromCharCode(event.keyCode) == 'S'){ ws.send('S')  }  
+   	if(String.fromCharCode(event.keyCode) == 'T'){ ws.send('T')  }  
+   	if(String.fromCharCode(event.keyCode) == 'U'){ ws.send('U')  }  
+   	if(String.fromCharCode(event.keyCode) == 'V'){ ws.send('V')  }  
+   	if(String.fromCharCode(event.keyCode) == 'W'){ ws.send('W')  }  
+   	if(String.fromCharCode(event.keyCode) == 'X'){ ws.send('X')  }  
+   	if(String.fromCharCode(event.keyCode) == 'Y'){ ws.send('Y')  }  
+   	if(String.fromCharCode(event.keyCode) == 'Z'){ ws.send('Z')  } 
+   	if(String.fromCharCode(event.keyCode) == 'À'){ ws.send('À')  }    //    `
+   
+   	if(String.fromCharCode(event.keyCode) == '1'){ ws.send('1')  }  
+   	if(String.fromCharCode(event.keyCode) == '2'){ ws.send('2')  }  
+   	if(String.fromCharCode(event.keyCode) == '3'){ ws.send('3')  }  
+   	if(String.fromCharCode(event.keyCode) == '4'){ ws.send('4')  }  
+   	if(String.fromCharCode(event.keyCode) == '5'){ ws.send('5')  }  
+   	if(String.fromCharCode(event.keyCode) == '6'){ ws.send('6')  }  
+   	if(String.fromCharCode(event.keyCode) == '7'){ ws.send('7')  }  
+   	if(String.fromCharCode(event.keyCode) == '8'){ ws.send('8')  }  
+   	if(String.fromCharCode(event.keyCode) == '9'){ ws.send('9')  }  
+   	if(String.fromCharCode(event.keyCode) == '0'){ ws.send('0')  }
+  	if(String.fromCharCode(event.keyCode) == '½'){ ws.send('½')  }     //   -
+  	if(String.fromCharCode(event.keyCode) == '»'){ ws.send('»')  }     //   =
+   	if(String.fromCharCode(event.keyCode) == ' '){ ws.send(' ')  }    
+  
+  
+   	if(String.fromCharCode(event.keyCode) == '¿'){ ws.send('¿')  }     //  /  /
+   	if(String.fromCharCode(event.keyCode) == 'Ü'){ ws.send('Ü')  }     //   \ 
+   	if(String.fromCharCode(event.keyCode) == '¼'){ ws.send('¼')  }     //   ,
+   	if(String.fromCharCode(event.keyCode) == 'Û'){ ws.send('Û')  }     //   [
+   	if(String.fromCharCode(event.keyCode) == 'Ý'){ ws.send('Ý')  }     //   ] 
+   	if(String.fromCharCode(event.keyCode) == '¾'){ ws.send('¾')  }     // .
+   	if(String.fromCharCode(event.keyCode) == 'Þ'){ ws.send('Þ')   }     //  '
+   	if(String.fromCharCode(event.keyCode) == 'º'){ ws.send('º')  }     //  ;
+   	if(String.fromCharCode(event.keyCode) == 'a'){ ws.send('a')  }     //  ;
+   	if(String.fromCharCode(event.keyCode) == 'b'){ ws.send('b')  }     //  ;
+   	
+   	
+ 
+}" onload="{
+   myStorage1 = localStorage.getItem('myStoredText1')
+   if(myStorage1  != null){      
+      document.getElementById('myToken').value = myStorage1 
+    }
+    
+    myStorage2 = localStorage.getItem('myStoredText2')
+    if(myStorage2  != null){
+       document.getElementById('myDeviceId').value = myStorage2 
+      
+    }
+    
+      
+}">
+
+  
+
+
+
+<br><br><br>
+
+
+
+
+<input type=hidden id="mySend" value="">
+<iframe style="display:none" width="400" height="200" name="myFrameName" id="myFrameId"></iframe> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+
+var host = location.origin.replace(/^http/, 'ws')
+var ws = new WebSocket(host);
+ws.onmessage = function (event) {
+ myNote = '----'
+ 
+ 
+    if (event.data == 'Z'){  acoustic.play('C', 3, 6);   myNote ='C, ' ;}
+    if (event.data == 'X'){  acoustic.play('C#', 3, 6);  myNote ='^C, ' ;}
+    if (event.data == 'C'){  acoustic.play('D', 3, 6);   myNote ='D, ' ;}
+    if (event.data == 'V'){  acoustic.play('D#', 3, 6);  myNote ='^D, ' ;}
+    if (event.data == 'B'){  acoustic.play('E', 3, 6);   myNote ='E, ' ;}
+    if (event.data == 'N'){  acoustic.play('F', 3, 6);   myNote ='F, ' ;  }
+    if (event.data == 'M'){  acoustic.play('F#', 3, 6);  myNote ='^F, ' ; }
+    if (event.data == '¼'){  acoustic.play('G', 3, 6);   myNote ='G, ' ; }   //  ,
+    
+    if (event.data == '¾'){  acoustic.play('G#', 3, 6);  myNote ='^G, ' ; }   //   .
+    if (event.data == '¿'){  acoustic.play('A', 3, 6);   myNote ='A, ' ; }   //    /
+    if (event.data == 'a'){  acoustic.play('A#', 3, 6);  myNote ='^A, ' ; }   //   a
+    if (event.data == ' '){  acoustic.play('B', 3, 6);   myNote ='B, ' ; }
+    
+    
+    if (event.data == 'A'){  acoustic.play('C', 4, 6);   myNote ='C ' ; }
+    if (event.data == 'S'){  acoustic.play('C#', 4, 6);  myNote ='C ' ; }
+    if (event.data == 'D'){  acoustic.play('D', 4, 6);   myNote ='D ' ; }
+    if (event.data == 'F'){  acoustic.play('D#', 4, 6);  myNote ='^D ' ; }
+    if (event.data == 'G'){  acoustic.play('E', 4, 6);   myNote ='E ' ; }
+    if (event.data == 'H'){  acoustic.play('F', 4, 6);   myNote ='F ' ; }
+    if (event.data == 'J'){  acoustic.play('F#', 4, 6);  myNote ='^F ' ; }
+    if (event.data == 'K'){  acoustic.play('G', 4, 6);   myNote ='G ' ; }
+    if (event.data == 'L'){  acoustic.play('G#', 4, 6);  myNote ='^G ' ; }
+    
+
+    if (event.data == 'º'){  acoustic.play('A', 4, 6);   myNote ='A ' ; }      //    ;
+    if (event.data == 'Þ'){  acoustic.play('A#', 4, 6);  myNote ='^A ' ; }     //    '
+   if (event.data == 'b'){  acoustic.play('B', 4, 6);  myNote ='B ' ; }     //    ---
+    
+    
+    if (event.data == 'Q'){  acoustic.play('C', 5, 6);   myNote ='c ' ; }
+    if (event.data == 'W'){  acoustic.play('C#', 5, 6);  myNote ='^c ' ; }
+    if (event.data == 'E'){  acoustic.play('D', 5, 6);   myNote ='d ' ; }
+    if (event.data == 'R'){  acoustic.play('D#', 5, 6);  myNote ='^d ' ; }
+    if (event.data == 'T'){  acoustic.play('E', 5, 6);   myNote ='e ' ; }
+    if (event.data == 'Y'){  acoustic.play('F', 5, 6);   myNote ='f ' ; }
+    if (event.data == 'U'){  acoustic.play('F#', 5, 6);  myNote ='^f ' ; }
+    if (event.data == 'I'){  acoustic.play('G', 5, 6);   myNote ='g ' ; }
+    if (event.data == 'O'){  acoustic.play('G#', 5, 6);  myNote ='^g ' ; }
+            
+    if (event.data == 'P'){  acoustic.play('A', 5, 6);   myNote ='a ' ; }
+    if (event.data == 'Û'){  acoustic.play('A#', 5, 6);  myNote ='^a ' ; }    // [
+    if (event.data == 'Ý'){  acoustic.play('B', 5, 6);   myNote ='b ' ; }     // ]
+    if (event.data == 'Ü'){  acoustic.play('C', 6, 6);   myNote ='c\' ' ; }     // \  DUPLICATE
+    
+    
+    
+    
+    if (event.data == 'À'){  acoustic.play('C', 6, 6);  myNote ='c\' ' ; }      //    `
+    if (event.data == '1'){  acoustic.play('C#', 6, 6);  myNote ='^c\' ' ; }
+    if (event.data == '2'){  acoustic.play('D', 6, 6);  myNote ='d\' ' ; }
+    if (event.data == '3'){  acoustic.play('D#', 6, 6);  myNote ='^d\' ' ; }
+    if (event.data == '4'){  acoustic.play('E', 6, 6);  myNote ='e\' ' ; }
+    if (event.data == '5'){  acoustic.play('F', 6, 6);  myNote ='f\' ' ; }
+    if (event.data == '6'){  acoustic.play('F#', 6, 6);  myNote ='^f\' ' ; }
+    if (event.data == '7'){  acoustic.play('G', 6, 6);  myNote ='g\' ' ; }
+    if (event.data == '8'){  acoustic.play('G#', 6, 6);  myNote ='^g\' ' ; }
+    if (event.data == '9'){  acoustic.play('A', 6, 6);  myNote ='a\' ' ; }
+    if (event.data == '0'){  acoustic.play('A#', 6, 6);  myNote ='^a\' ' ; }
+    if (event.data == '½'){  acoustic.play('B', 6, 6);  myNote ='b\' ' ; }     // -
+    if (event.data == '»'){  acoustic.play('C', 7, 6);  myNote ='c\'\' ' ; }   // =
+   
+   
+   
+   document.getElementById('myDiv1').innerHTML = 'Pressed = '+event.data + ', note = ' + myNote +'<br>'+document.getElementById('myDiv1').innerHTML; 
+    //alert(event.data)
+    
+    //myNote = '|:D2|D2|D2|D2|'
+    
+    
+   document.getElementById('abc').value += myNote
+   document.getElementById('abc').select()
+   document.getElementById('abc').onselect()
+  
+    
+    
+};
+
+ ws.onconnection = function (event) {
+    ws.send('something');
+}; 
+
+
+</script>
+
+
+   
+   
+
+   
+    
+<br><br><br><br>  
+<h1>Websocket Output Here</h1>
+
+
+<p><b>abcjs</b> is an open source javascript rendering engine for interpreting abc formatted tunes.
+	It will render sheet music entirely in your browser.
+	It was written in 2009-2011 by Gregory Dyke and Paul Rosen.
+	This page demonstrates a simple implementation of it so you can see how to use it in your own pages.
+</p>
+<p>Type or paste an abc tune in the area below and see it rendered as you type. Also notice that you can click on the drawn notes and
+	see the place in the text where that note is defined.</p>
+
+<p>For more information, see <a href="https://github.com/paulrosen/abcjs" >the project page</a>.</p>
+<textarea name="abc" id="abc" cols="80" rows="15">
+X:1
+T:Notes
+M:C
+L:1/4
+K:C
+|:D2</textarea>
+
+<hr />
+<div id="midi"></div>
+<div id="midi-download"></div>
+<div id="warnings"></div>
+<div id="music"></div>
+<div id="paper0"></div>
+<div id="paper1"></div>
+<div id="paper2"></div>
+<div id="paper3"></div>
+<div id="selection"></div>
+
+<script type="text/javascript">
+	function selectionCallback(abcelem) {
+		var note = {};
+		for (var key in abcelem) {
+			if (abcelem.hasOwnProperty(key) && key !== "abselem")
+				note[key] = abcelem[key];
+		}
+		console.log(abcelem);
+		var el = document.getElementById("selection");
+		el.innerHTML = "<b>selectionCallback parameter:</b><br>" + JSON.stringify(note);
+	}
+
+	function initEditor() {
+		new ABCJS.Editor("abc", { paper_id: "paper0",
+			generate_midi: true,
+			midi_id:"midi",
+			midi_download_id: "midi-download",
+			generate_warnings: true,
+			warnings_id:"warnings",
+			midi_options: {
+				generateDownload: true
+			},
+			render_options: {
+				listener: { highlight: selectionCallback }
+			}
+		});
+	}
+
+	window.addEventListener("load", initEditor, false);
+</script>
+
+
+
+
+
+
+
+
+
+<div id="myDiv2">  </div><br>
+<div id="myDiv1">  </div><br>
+  
+   
+    
+    
+    
+    
+    
+    
+<br><br>    
+Use at your own risk, by Jeremy Ellis<br>
+
+audiosynth by Keith Whol <a href="https://github.com/keithwhor/audiosynth">https://github.com/keithwhor/audiosynth</a>
+abcjs by paul Rosen <a href="https://github.com/paulrosen/abcjs">https://github.com/paulrosen/abcjs</a>
+Website: <a href="http://rocksetta.com/">http://rocksetta.com/</a><br>
+Twitter: @rocksetta
+
+</body>
+</html>
