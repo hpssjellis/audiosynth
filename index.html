@@ -28,12 +28,18 @@
 </script>
 
 
-
 <!--
+
+<input type=button value="acoustic.play('C', 4, 0.5)" onclick="{
+ acoustic.play('C', 4, 0.5);
+}"><br>
+
 <input type=button value="acoustic.play('C', 4, 6)" onclick="{
-
  acoustic.play('C', 4, 6);
+}"><br>
 
+<input type=button value="acoustic.play('C', 4, 12)" onclick="{
+ acoustic.play('C', 4, 12);
 }"><br>
 
 
@@ -223,68 +229,74 @@ ws.onmessage = function (event) {
  //alert(myInterval)
  //alert(mySeconds)
  
-    if (event.data == 'Z'){  acoustic.play('C', 3, 6);   myNote ='C, ' ;}
-    if (event.data == 'X'){  acoustic.play('C#', 3, 6);  myNote ='^C, ' ;}
-    if (event.data == 'C'){  acoustic.play('D', 3, 6);   myNote ='D, ' ;}
-    if (event.data == 'V'){  acoustic.play('D#', 3, 6);  myNote ='^D, ' ;}
-    if (event.data == 'B'){  acoustic.play('E', 3, 6);   myNote ='E, ' ;}
-    if (event.data == 'N'){  acoustic.play('F', 3, 6);   myNote ='F, ' ;  }
-    if (event.data == 'M'){  acoustic.play('F#', 3, 6);  myNote ='^F, ' ; }
-    if (event.data == '¼'){  acoustic.play('G', 3, 6);   myNote ='G, ' ; }   //  ,
+ if (myInterval > 100){ myDuration = 0.1;  noteLength = '/16 '; }
+ if (myInterval > 200){ myDuration = 0.3;  noteLength = '/8 '; }
+ if (myInterval > 300){ myDuration = 0.5;  noteLength = '/4 '; }
+ if (myInterval > 500){ myDuration = 1;  noteLength = '/2 '; }
+ if (myInterval > 1000){ myDuration = 6;  noteLength = ' '; }
+ 
+    if (event.data == 'Z'){  acoustic.play('C', 3, myDuration);   myNote ='C,'+ noteLength; }
+    if (event.data == 'X'){  acoustic.play('C#', 3, myDuration);  myNote ='^C,'+ noteLength;}
+    if (event.data == 'C'){  acoustic.play('D', 3, myDuration);   myNote ='D,'+ noteLength;}
+    if (event.data == 'V'){  acoustic.play('D#', 3, myDuration);  myNote ='^D,'+ noteLength;}
+    if (event.data == 'B'){  acoustic.play('E', 3, myDuration);   myNote ='E,'+ noteLength;}
+    if (event.data == 'N'){  acoustic.play('F', 3, myDuration);   myNote ='F,'+ noteLength;}
+    if (event.data == 'M'){  acoustic.play('F#', 3, myDuration);  myNote ='^F,'+ noteLength;}
+    if (event.data == '¼'){  acoustic.play('G', 3, myDuration);   myNote ='G,'+ noteLength;}  //  ,
     
-    if (event.data == '¾'){  acoustic.play('G#', 3, 6);  myNote ='^G, ' ; }   //   .
-    if (event.data == '¿'){  acoustic.play('A', 3, 6);   myNote ='A, ' ; }   //    /
-    if (event.data == 'a'){  acoustic.play('A#', 3, 6);  myNote ='^A, ' ; }   //   a
-    if (event.data == ' '){  acoustic.play('B', 3, 6);   myNote ='B, ' ; }
+    if (event.data == '¾'){  acoustic.play('G#', 3, myDuration);  myNote ='^G,'+ noteLength;}  //   .
+    if (event.data == '¿'){  acoustic.play('A', 3, myDuration);   myNote ='A,'+ noteLength;}  //    /
+    if (event.data == 'a'){  acoustic.play('A#', 3, myDuration);  myNote ='^A,'+ noteLength;}   //   a
+    if (event.data == ' '){  acoustic.play('B', 3, myDuration);   myNote ='B,'+ noteLength;}
     
     
-    if (event.data == 'A'){  acoustic.play('C', 4, 6);   myNote ='C ' ; }
-    if (event.data == 'S'){  acoustic.play('C#', 4, 6);  myNote ='^C ' ; }
-    if (event.data == 'D'){  acoustic.play('D', 4, 6);   myNote ='D ' ; }
-    if (event.data == 'F'){  acoustic.play('D#', 4, 6);  myNote ='^D ' ; }
-    if (event.data == 'G'){  acoustic.play('E', 4, 6);   myNote ='E ' ; }
-    if (event.data == 'H'){  acoustic.play('F', 4, 6);   myNote ='F ' ; }
-    if (event.data == 'J'){  acoustic.play('F#', 4, 6);  myNote ='^F ' ; }
-    if (event.data == 'K'){  acoustic.play('G', 4, 6);   myNote ='G ' ; }
-    if (event.data == 'L'){  acoustic.play('G#', 4, 6);  myNote ='^G ' ; }
+    if (event.data == 'A'){  acoustic.play('C', 4, myDuration);   myNote ='C'+ noteLength;}
+    if (event.data == 'S'){  acoustic.play('C#', 4, myDuration);  myNote ='^C'+ noteLength;}
+    if (event.data == 'D'){  acoustic.play('D', 4, myDuration);   myNote ='D'+ noteLength;}
+    if (event.data == 'F'){  acoustic.play('D#', 4, myDuration);  myNote ='^D'+ noteLength;}
+    if (event.data == 'G'){  acoustic.play('E', 4, myDuration);   myNote ='E'+ noteLength;}
+    if (event.data == 'H'){  acoustic.play('F', 4, myDuration);   myNote ='F'+ noteLength;}
+    if (event.data == 'J'){  acoustic.play('F#', 4, myDuration);  myNote ='^F'+ noteLength;}
+    if (event.data == 'K'){  acoustic.play('G', 4, myDuration);   myNote ='G'+ noteLength;}
+    if (event.data == 'L'){  acoustic.play('G#', 4, myDuration);  myNote ='^G'+ noteLength;}
     
 
-    if (event.data == 'º'){  acoustic.play('A', 4, 6);   myNote ='A ' ; }      //    ;
-    if (event.data == 'Þ'){  acoustic.play('A#', 4, 6);  myNote ='^A ' ; }     //    '
-   if (event.data == 'b'){  acoustic.play('B', 4, 6);  myNote ='B ' ; }     //    ---
+    if (event.data == 'º'){  acoustic.play('A', 4, myDuration);   myNote ='A'+ noteLength;}     //    ;
+    if (event.data == 'Þ'){  acoustic.play('A#', 4, myDuration);  myNote ='^A'+ noteLength;}    //    '
+   if (event.data == 'b'){  acoustic.play('B', 4, myDuration);  myNote ='B'+ noteLength;}   //    ---
     
     
-    if (event.data == 'Q'){  acoustic.play('C', 5, 6);   myNote ='c ' ; }
-    if (event.data == 'W'){  acoustic.play('C#', 5, 6);  myNote ='^c ' ; }
-    if (event.data == 'E'){  acoustic.play('D', 5, 6);   myNote ='d ' ; }
-    if (event.data == 'R'){  acoustic.play('D#', 5, 6);  myNote ='^d ' ; }
-    if (event.data == 'T'){  acoustic.play('E', 5, 6);   myNote ='e ' ; }
-    if (event.data == 'Y'){  acoustic.play('F', 5, 6);   myNote ='f ' ; }
-    if (event.data == 'U'){  acoustic.play('F#', 5, 6);  myNote ='^f ' ; }
-    if (event.data == 'I'){  acoustic.play('G', 5, 6);   myNote ='g ' ; }
-    if (event.data == 'O'){  acoustic.play('G#', 5, 6);  myNote ='^g ' ; }
+    if (event.data == 'Q'){  acoustic.play('C', 5, myDuration);   myNote ='c'+ noteLength;}
+    if (event.data == 'W'){  acoustic.play('C#', 5, myDuration);  myNote ='^c'+ noteLength;}
+    if (event.data == 'E'){  acoustic.play('D', 5, myDuration);   myNote ='d'+ noteLength;}
+    if (event.data == 'R'){  acoustic.play('D#', 5, myDuration);  myNote ='^d'+ noteLength;}
+    if (event.data == 'T'){  acoustic.play('E', 5, myDuration);   myNote ='e'+ noteLength;}
+    if (event.data == 'Y'){  acoustic.play('F', 5, myDuration);   myNote ='f'+ noteLength;}
+    if (event.data == 'U'){  acoustic.play('F#', 5, myDuration);  myNote ='^f'+ noteLength;}
+    if (event.data == 'I'){  acoustic.play('G', 5, myDuration);   myNote ='g'+ noteLength;}
+    if (event.data == 'O'){  acoustic.play('G#', 5, myDuration);  myNote ='^g'+ noteLength;}
             
-    if (event.data == 'P'){  acoustic.play('A', 5, 6);   myNote ='a ' ; }
-    if (event.data == 'Û'){  acoustic.play('A#', 5, 6);  myNote ='^a ' ; }    // [
-    if (event.data == 'Ý'){  acoustic.play('B', 5, 6);   myNote ='b ' ; }     // ]
-    if (event.data == 'Ü'){  acoustic.play('C', 6, 6);   myNote ='c\' ' ; }     // \  DUPLICATE
+    if (event.data == 'P'){  acoustic.play('A', 5, myDuration);   myNote ='a'+ noteLength;}
+    if (event.data == 'Û'){  acoustic.play('A#', 5, myDuration);  myNote ='^a'+ noteLength;}    // [
+    if (event.data == 'Ý'){  acoustic.play('B', 5, myDuration);   myNote ='b'+ noteLength;}    // ]
+    if (event.data == 'Ü'){  acoustic.play('C', 6, myDuration);   myNote ='c\''+ noteLength;}    // \  DUPLICATE
     
     
     
     
-    if (event.data == 'À'){  acoustic.play('C', 6, 6);  myNote ='c\' ' ; }      //    `
-    if (event.data == '1'){  acoustic.play('C#', 6, 6);  myNote ='^c\' ' ; }
-    if (event.data == '2'){  acoustic.play('D', 6, 6);  myNote ='d\' ' ; }
-    if (event.data == '3'){  acoustic.play('D#', 6, 6);  myNote ='^d\' ' ; }
-    if (event.data == '4'){  acoustic.play('E', 6, 6);  myNote ='e\' ' ; }
-    if (event.data == '5'){  acoustic.play('F', 6, 6);  myNote ='f\' ' ; }
-    if (event.data == '6'){  acoustic.play('F#', 6, 6);  myNote ='^f\' ' ; }
-    if (event.data == '7'){  acoustic.play('G', 6, 6);  myNote ='g\' ' ; }
-    if (event.data == '8'){  acoustic.play('G#', 6, 6);  myNote ='^g\' ' ; }
-    if (event.data == '9'){  acoustic.play('A', 6, 6);  myNote ='a\' ' ; }
-    if (event.data == '0'){  acoustic.play('A#', 6, 6);  myNote ='^a\' ' ; }
-    if (event.data == '½'){  acoustic.play('B', 6, 6);  myNote ='b\' ' ; }     // -
-    if (event.data == '»'){  acoustic.play('C', 7, 6);  myNote ='c\'\' ' ; }   // =
+    if (event.data == 'À'){  acoustic.play('C', 6, myDuration);  myNote ='c\''+ noteLength;}     //    `
+    if (event.data == '1'){  acoustic.play('C#', 6, myDuration);  myNote ='^c\''+ noteLength;}
+    if (event.data == '2'){  acoustic.play('D', 6, myDuration);  myNote ='d\''+ noteLength;}
+    if (event.data == '3'){  acoustic.play('D#', 6, myDuration);  myNote ='^d\''+ noteLength;}
+    if (event.data == '4'){  acoustic.play('E', 6, myDuration);  myNote ='e\''+ noteLength;}
+    if (event.data == '5'){  acoustic.play('F', 6, myDuration);  myNote ='f\''+ noteLength;}
+    if (event.data == '6'){  acoustic.play('F#', 6, myDuration);  myNote ='^f\''+ noteLength;}
+    if (event.data == '7'){  acoustic.play('G', 6, myDuration);  myNote ='g\''+ noteLength;}
+    if (event.data == '8'){  acoustic.play('G#', 6, myDuration);  myNote ='^g\''+ noteLength;}
+    if (event.data == '9'){  acoustic.play('A', 6, myDuration);  myNote ='a\''+ noteLength;}
+    if (event.data == '0'){  acoustic.play('A#', 6, myDuration);  myNote ='^a\''+ noteLength;}
+    if (event.data == '½'){  acoustic.play('B', 6, myDuration);  myNote ='b\''+ noteLength;}   // -
+    if (event.data == '»'){  acoustic.play('C', 7, myDuration);  myNote ='c\'\''+ noteLength;}   // =
    
    
    
@@ -296,7 +308,7 @@ ws.onmessage = function (event) {
     
     
     //if (myInterval ){myNote += 'z'}
-    for (myLoop = 1; myLoop <= myInterval/500; myLoop++){
+    for (myLoop = 1; myLoop <= myInterval/1000; myLoop++){
        myNote += 'z'
        document.myCounter ++;
        if (document.myCounter % 4 == 0){myNote += '| '}
@@ -337,14 +349,14 @@ ws.onmessage = function (event) {
 
 <input type=button value=clear onclick="{
 
-document.getElementById('abc').value ='X:1\nT:Notes\nM:C\nL:1/4\nK:C\n| ' 
+document.getElementById('abc').value ='X:1\nT:Notes\nM:C\nL:1/1\nK:C\n| ' 
 
 }"><br>
 <textarea name="abc" id="abc" cols="80" rows="15" READONLY  >
 X:1
 T:Notes
 M:C
-L:1/4
+L:1/1
 K:C
 | </textarea>
 
