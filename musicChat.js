@@ -7,6 +7,8 @@ var port = process.env.PORT || 8080
 app.use(express.static(__dirname + "/"))
 
 var server = http.createServer(app)
+server.maxConnections = 4;
+
 server.listen(port)
 
 
@@ -30,12 +32,20 @@ wss.myBroadcast = function(data) {
 
 
 wss.on("connection", function(ws) {
+  
+
+
+
+  
+  
+  
   var id = setInterval(function() {
       console.log("server runningC")
       //ws.send(JSON.stringify(new Date()), function() {  })
       //ws.send("C",function() {  })
-    
-  }, 30000)   
+      wss.myBroadcast("Time is up refresh to stay");  
+      wss.close();
+  }, 1000*60*3) // 3 minutes  
   
   
   console.log("websocket connection open " )
