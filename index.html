@@ -207,14 +207,21 @@ no keyboard ability to play
 
 <script>
 document. myCounter = 0;
-
+ document.myTime = new Date();
+ document.myTimeOld = document.myTime.getTime()
 
 var host = location.origin.replace(/^http/, 'ws')
 var ws = new WebSocket(host);
 ws.onmessage = function (event) {
  myNote = '|'
-
  
+ 
+ myTime = new Date();
+ mySeconds = myTime.getTime()
+ myInterval = mySeconds - document.myTimeOld  // in milliseconds
+ document.myTimeOld = mySeconds
+ //alert(myInterval)
+ //alert(mySeconds)
  
     if (event.data == 'Z'){  acoustic.play('C', 3, 6);   myNote ='C, ' ;}
     if (event.data == 'X'){  acoustic.play('C#', 3, 6);  myNote ='^C, ' ;}
@@ -286,8 +293,21 @@ ws.onmessage = function (event) {
     
     //myNote = '|:D2|D2|D2|D2|'
     
+    
+    
+    //if (myInterval ){myNote += 'z'}
+    for (myLoop = 1; myLoop <= myInterval/500; myLoop++){
+       myNote += 'z'
+    }
+    
     document.myCounter ++;
     if (document.myCounter % 4 == 0){myNote += '| '}
+    
+    
+    if (document.myCounter % 20 == 0){myNote += ']\n'}
+    
+    //  ]
+    
     
    document.getElementById('abc').value += myNote
    document.getElementById('abc').focus()
