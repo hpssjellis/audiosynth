@@ -325,10 +325,15 @@ ws.onmessage = function (event) {
     
     //  ]
     
+   
+   
+    // alert(document.getElementById('myEdit').value)
+   if (document.getElementById('myEdit').value == 'edit'){ 
     
-   document.getElementById('abc').value += myNote
-   document.getElementById('abc').focus()
-   //document.getElementById('abc').onselect()
+       document.getElementById('abc').value += myNote
+       document.getElementById('abc').focus()
+
+   }
   
     
     
@@ -349,12 +354,26 @@ ws.onmessage = function (event) {
     
 <br><br><br><br>  
 <h1>Websocket Output Here</h1>
-
 <input type=button value=clear onclick="{
 
 document.getElementById('abc').value ='X:1\nT:Notes\nM:C\nL:1/1\nK:C\n| ' 
 
-}"><br>
+}">
+<input id="myEdit" type=button value=edit onclick="{
+  //alert(document.getElementById('myEdit').value)
+  if ( this.value =='edit'){
+      
+      document.getElementById('abc').readOnly = false
+      document.getElementById('abc').style.backgroundColor = 'yellow'
+      this.value ='play'
+    } else { 
+    
+       document.getElementById('abc').style.backgroundColor = 'white'
+       document.getElementById('abc').readOnly = true
+       this.value ='edit'
+    
+    }
+}"><br><br>
 <textarea name="abc" id="abc" cols="80" rows="15" READONLY  >
 X:1
 T:Notes
