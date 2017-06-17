@@ -219,6 +219,9 @@ document. myCounter = 0;
 var host = location.origin.replace(/^http/, 'ws')
 var ws = new WebSocket(host);
 ws.onmessage = function (event) {
+ 
+ if (event.data == 'Time is up refresh to stay'){document.body.style.backgroundColor = "red";}
+ 
  myNote = '|'
  
  
@@ -263,7 +266,8 @@ ws.onmessage = function (event) {
 
     if (event.data == 'º'){  acoustic.play('A', 4, myDuration);   myNote ='A'+ noteLength;}     //    ;
     if (event.data == 'Þ'){  acoustic.play('A#', 4, myDuration);  myNote ='^A'+ noteLength;}    //    '
-   if (event.data == 'b'){  acoustic.play('B', 4, myDuration);  myNote ='B'+ noteLength;}   //    ---
+   //if (event.data == 'b'){  acoustic.play('B', 4, myDuration);  myNote ='B'+ noteLength;}   //    ---
+    if (event.data == 'Ü'){  acoustic.play('B', 4, myDuration);   myNote ='B' + noteLength;}    // \  
     
     
     if (event.data == 'Q'){  acoustic.play('C', 5, myDuration);   myNote ='c'+ noteLength;}
@@ -279,7 +283,6 @@ ws.onmessage = function (event) {
     if (event.data == 'P'){  acoustic.play('A', 5, myDuration);   myNote ='a'+ noteLength;}
     if (event.data == 'Û'){  acoustic.play('A#', 5, myDuration);  myNote ='^a'+ noteLength;}    // [
     if (event.data == 'Ý'){  acoustic.play('B', 5, myDuration);   myNote ='b'+ noteLength;}    // ]
-    if (event.data == 'Ü'){  acoustic.play('C', 6, myDuration);   myNote ='c\''+ noteLength;}    // \  DUPLICATE
     
     
     
