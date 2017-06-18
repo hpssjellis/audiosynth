@@ -8,6 +8,6 @@
   "dependencies": {
     "express": "4.14.0",
     "ws": "0.4.32",
-    "tone": 0.10.0
+    "tone": "0.10.0"
   }
 }
