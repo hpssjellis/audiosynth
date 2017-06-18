@@ -39,7 +39,7 @@ var synth  = new Tone.Synth().toMaster();
 </script>
 
 
-<input id="myStart" type=button value="iOS Start" onclick="{
+<input id="myIOS" type=button value="iOS Start" onclick="{
 var synth = new Tone.Synth().toMaster();
 
 //play a middle 'C' for the duration of an 8th note
@@ -185,17 +185,8 @@ no keyboard ability to play
    	
  
 }" onload="{
-   myStorage1 = localStorage.getItem('myStoredText1')
-   if(myStorage1  != null){      
-      document.getElementById('myToken').value = myStorage1 
-    }
-    
-    myStorage2 = localStorage.getItem('myStoredText2')
-    if(myStorage2  != null){
-       document.getElementById('myDeviceId').value = myStorage2 
-      
-    }
-    
+   document.getElementById('myIOS').click();
+   document.getElementById('abc').focus()
       
 }">
 
@@ -248,7 +239,7 @@ function wssend(myStuff){
    }
 }
 
-
+ document.mobileInput = false;
  document.mySocial = true
  document.myCounter = 0;
  document.myTime = new Date();
@@ -368,11 +359,15 @@ function myPrep(event){
    
     // alert(document.getElementById('myEdit').value)
    if (document.getElementById('myEdit').value == 'edit'){ 
-    
-       document.getElementById('abc').value += myNote
-       document.getElementById('abc').focus()
 
+       document.getElementById('abc').value += myNote
+       if(document.mobileInput ==true){
+       document.getElementById('abc').focus()
+    }
    }
+   
+   
+   
   
     //alert(event.data)
     
@@ -439,13 +434,32 @@ if (this.value == 'Solo'){
 }">
 
 <br><br>
-<textarea name="abc" id="abc" cols="80" rows="15" READONLY  >
+
+
+
+
+
+<textarea name="abc" id="abc" cols="80" rows="15" READONLY onkeydown="{
+  
+}" >
 X:1
 T:Notes
 M:C
 L:1/1
 K:C
-| </textarea>
+| </textarea><br>
+
+
+<input type=text value="mobile input" onFocus="{
+    this.value = ''
+}" onBlur="{
+      document.mobileInput = false;
+}" onkeydown="{
+   wssend(event)
+   document.mobileInput = true;
+}>
+
+
 
 <hr />
 <div id="midi"></div>
