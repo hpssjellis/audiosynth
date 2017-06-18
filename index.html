@@ -13,7 +13,7 @@
 		}
 	</style>
 
-<title>Particle.io web page control of the Core or Photon using a hacked websocket.<br> Not very secure but it works </title>
+<title>Sheet Music Socket </title>
 
 
 
@@ -100,7 +100,7 @@ synth.triggerAttackRelease('C4', '8n');
 
 -->
 
-<h2 aligne=center>MusicChat use your keypad</h2>
+<h2 aligne=center>MusicChat use your keypad2</h2>
 
 <input type=button value="C4" onClick="{wssend('A'); }">
 <input type=button value="#C4" onclick="{wssend('S')}">
@@ -450,14 +450,14 @@ K:C
 | </textarea><br>
 
 
-<input type=text value="mobile input" onFocus="{
+<input type=text value="Mobile Input use Firefox" onFocus="{
     this.value = ''
 }" onBlur="{
       document.mobileInput = false;
-}" onkeydown="{
+}" onchange="{
    wssend(event)
    document.mobileInput = true;
-}>
+}">
 
 
 
