@@ -238,7 +238,7 @@ function wssend(myStuff){
        
    }
 }
-
+ document.myChordCount = 0;
  document.mobileInput = false;
  document.mySocial = true
  document.myCounter = 0;
@@ -253,7 +253,7 @@ function myPrep(event){
      if (event.data == 'Time is up refresh to stay'){document.body.style.backgroundColor = "red";}
  
  myNote = '|'
- 
+ myChord = ''
  
  myTime = new Date();
  mySeconds = myTime.getTime()
@@ -261,6 +261,12 @@ function myPrep(event){
  document.myTimeOld = mySeconds
  //alert(myInterval)
  //alert(mySeconds)
+ //if ((myInterval < 100) && (oldEventData != event.data) && (myChord != '[' )){ 
+//    myChord = '['; document.myChordCount = document.myCounter
+ //} 
+
+if (myChord == '['  && document.myCounter > document.myChordCount+4 ){myChord = ']'; document.myChordCount = 0 }
+
  
  if (myInterval > 100){ myDuration = 0.1;  noteLength = '/16 '; }
  if (myInterval > 200){ myDuration = 0.3;  noteLength = '/8 '; }
@@ -268,68 +274,70 @@ function myPrep(event){
  if (myInterval > 500){ myDuration = 1;  noteLength = '/2 '; }
  if (myInterval > 1000){ myDuration = 6;  noteLength = ' '; }
  
-    if (event.data == 'Z'){  synth.triggerAttackRelease('C3', myDuration);   myNote ='C,'+ noteLength; }
-    if (event.data == 'X'){  synth.triggerAttackRelease('C#3', myDuration);  myNote ='^C,'+ noteLength;}
-    if (event.data == 'C'){  synth.triggerAttackRelease('D3', myDuration);   myNote ='D,'+ noteLength;}
-    if (event.data == 'V'){  synth.triggerAttackRelease('D#3', myDuration);  myNote ='^D,'+ noteLength;}
-    if (event.data == 'B'){  synth.triggerAttackRelease('E3', myDuration);   myNote ='E,'+ noteLength;}
-    if (event.data == 'N'){  synth.triggerAttackRelease('F3', myDuration);   myNote ='F,'+ noteLength;}
-    if (event.data == 'M'){  synth.triggerAttackRelease('F#3', myDuration);  myNote ='^F,'+ noteLength;}
-    if (event.data == '¼'){  synth.triggerAttackRelease('G3', myDuration);   myNote ='G,'+ noteLength;}  //  ,
+ oldEventData = event.data
+ 
+    if (event.data == 'Z'){  synth.triggerAttackRelease('C3', myDuration);   myNote = myChord + 'C,'+ noteLength; }
+    if (event.data == 'X'){  synth.triggerAttackRelease('C#3', myDuration);  myNote = myChord + '^C,'+ noteLength;}
+    if (event.data == 'C'){  synth.triggerAttackRelease('D3', myDuration);   myNote = myChord +'D,'+ noteLength;}
+    if (event.data == 'V'){  synth.triggerAttackRelease('D#3', myDuration);  myNote = myChord +'^D,'+ noteLength;}
+    if (event.data == 'B'){  synth.triggerAttackRelease('E3', myDuration);   myNote = myChord +'E,'+ noteLength;}
+    if (event.data == 'N'){  synth.triggerAttackRelease('F3', myDuration);   myNote = myChord +'F,'+ noteLength;}
+    if (event.data == 'M'){  synth.triggerAttackRelease('F#3', myDuration);  myNote = myChord +'^F,'+ noteLength;}
+    if (event.data == '¼'){  synth.triggerAttackRelease('G3', myDuration);   myNote = myChord + 'G,'+ noteLength;}  //  ,
     
-    if (event.data == '¾'){  synth.triggerAttackRelease('G#3', myDuration);  myNote ='^G,'+ noteLength;}  //   .
-    if (event.data == '¿'){  synth.triggerAttackRelease('A3', myDuration);   myNote ='A,'+ noteLength;}  //    /
-    if (event.data == 'a'){  synth.triggerAttackRelease('A#3', myDuration);  myNote ='^A,'+ noteLength;}   //   a
-    if (event.data == ' '){  synth.triggerAttackRelease('B3', myDuration);   myNote ='B,'+ noteLength;}
+    if (event.data == '¾'){  synth.triggerAttackRelease('G#3', myDuration);  myNote = myChord + '^G,'+ noteLength;}  //   .
+    if (event.data == '¿'){  synth.triggerAttackRelease('A3', myDuration);   myNote = myChord + 'A,'+ noteLength;}  //    /
+    if (event.data == 'a'){  synth.triggerAttackRelease('A#3', myDuration);  myNote = myChord + '^A,'+ noteLength;}   //   a
+    if (event.data == ' '){  synth.triggerAttackRelease('B3', myDuration);   myNote = myChord + 'B,'+ noteLength;}
     
     
-    if (event.data == 'A'){  synth.triggerAttackRelease('C4', myDuration);   myNote ='C'+ noteLength;}
-    if (event.data == 'S'){  synth.triggerAttackRelease('C#4', myDuration);  myNote ='^C'+ noteLength;}
-    if (event.data == 'D'){  synth.triggerAttackRelease('D4', myDuration);   myNote ='D'+ noteLength;}
-    if (event.data == 'F'){  synth.triggerAttackRelease('D#4', myDuration);  myNote ='^D'+ noteLength;}
-    if (event.data == 'G'){  synth.triggerAttackRelease('E4', myDuration);   myNote ='E'+ noteLength;}
-    if (event.data == 'H'){  synth.triggerAttackRelease('F4', myDuration);   myNote ='F'+ noteLength;}
-    if (event.data == 'J'){  synth.triggerAttackRelease('F#4', myDuration);  myNote ='^F'+ noteLength;}
-    if (event.data == 'K'){  synth.triggerAttackRelease('G4', myDuration);   myNote ='G'+ noteLength;}
-    if (event.data == 'L'){  synth.triggerAttackRelease('G#4', myDuration);  myNote ='^G'+ noteLength;}
+    if (event.data == 'A'){  synth.triggerAttackRelease('C4', myDuration);   myNote = myChord + 'C'+ noteLength;}
+    if (event.data == 'S'){  synth.triggerAttackRelease('C#4', myDuration);  myNote = myChord + '^C'+ noteLength;}
+    if (event.data == 'D'){  synth.triggerAttackRelease('D4', myDuration);   myNote = myChord + 'D'+ noteLength;}
+    if (event.data == 'F'){  synth.triggerAttackRelease('D#4', myDuration);  myNote = myChord + '^D'+ noteLength;}
+    if (event.data == 'G'){  synth.triggerAttackRelease('E4', myDuration);   myNote = myChord + 'E'+ noteLength;}
+    if (event.data == 'H'){  synth.triggerAttackRelease('F4', myDuration);   myNote = myChord + 'F'+ noteLength;}
+    if (event.data == 'J'){  synth.triggerAttackRelease('F#4', myDuration);  myNote = myChord + '^F'+ noteLength;}
+    if (event.data == 'K'){  synth.triggerAttackRelease('G4', myDuration);   myNote = myChord + 'G'+ noteLength;}
+    if (event.data == 'L'){  synth.triggerAttackRelease('G#4', myDuration);  myNote = myChord + '^G'+ noteLength;}
     
 
-    if (event.data == 'º'){  synth.triggerAttackRelease('A4', myDuration);   myNote ='A'+ noteLength;}     //    ;
-    if (event.data == 'Þ'){  synth.triggerAttackRelease('A#4', myDuration);  myNote ='^A'+ noteLength;}    //    '
+    if (event.data == 'º'){  synth.triggerAttackRelease('A4', myDuration);   myNote = myChord + 'A'+ noteLength;}     //    ;
+    if (event.data == 'Þ'){  synth.triggerAttackRelease('A#4', myDuration);  myNote = myChord + '^A'+ noteLength;}    //    '
    //if (event.data == 'b'){  synth.triggerAttackRelease('B', 4, myDuration);  myNote ='B'+ noteLength;}   //    ---
-    if (event.data == 'Ü'){  synth.triggerAttackRelease('B4', myDuration);   myNote ='B' + noteLength;}    // \  
+    if (event.data == 'Ü'){  synth.triggerAttackRelease('B4', myDuration);   myNote = myChord + 'B' + noteLength;}    // \  
     
     
-    if (event.data == 'Q'){  synth.triggerAttackRelease('C5', myDuration);   myNote ='c'+ noteLength;}
-    if (event.data == 'W'){  synth.triggerAttackRelease('C#5', myDuration);  myNote ='^c'+ noteLength;}
-    if (event.data == 'E'){  synth.triggerAttackRelease('D5', myDuration);   myNote ='d'+ noteLength;}
-    if (event.data == 'R'){  synth.triggerAttackRelease('D#5', myDuration);  myNote ='^d'+ noteLength;}
-    if (event.data == 'T'){  synth.triggerAttackRelease('E5', myDuration);   myNote ='e'+ noteLength;}
-    if (event.data == 'Y'){  synth.triggerAttackRelease('F5', myDuration);   myNote ='f'+ noteLength;}
-    if (event.data == 'U'){  synth.triggerAttackRelease('F#5', myDuration);  myNote ='^f'+ noteLength;}
-    if (event.data == 'I'){  synth.triggerAttackRelease('G5', myDuration);   myNote ='g'+ noteLength;}
-    if (event.data == 'O'){  synth.triggerAttackRelease('G#5', myDuration);  myNote ='^g'+ noteLength;}
+    if (event.data == 'Q'){  synth.triggerAttackRelease('C5', myDuration);   myNote = myChord + 'c'+ noteLength;}
+    if (event.data == 'W'){  synth.triggerAttackRelease('C#5', myDuration);  myNote = myChord + '^c'+ noteLength;}
+    if (event.data == 'E'){  synth.triggerAttackRelease('D5', myDuration);   myNote = myChord + 'd'+ noteLength;}
+    if (event.data == 'R'){  synth.triggerAttackRelease('D#5', myDuration);  myNote = myChord + '^d'+ noteLength;}
+    if (event.data == 'T'){  synth.triggerAttackRelease('E5', myDuration);   myNote = myChord + 'e'+ noteLength;}
+    if (event.data == 'Y'){  synth.triggerAttackRelease('F5', myDuration);   myNote = myChord + 'f'+ noteLength;}
+    if (event.data == 'U'){  synth.triggerAttackRelease('F#5', myDuration);  myNote = myChord + '^f'+ noteLength;}
+    if (event.data == 'I'){  synth.triggerAttackRelease('G5', myDuration);   myNote = myChord + 'g'+ noteLength;}
+    if (event.data == 'O'){  synth.triggerAttackRelease('G#5', myDuration);  myNote = myChord + '^g'+ noteLength;}
             
-    if (event.data == 'P'){  synth.triggerAttackRelease('A5', myDuration);   myNote ='a'+ noteLength;}
-    if (event.data == 'Û'){  synth.triggerAttackRelease('A#5', myDuration);  myNote ='^a'+ noteLength;}    // [
-    if (event.data == 'Ý'){  synth.triggerAttackRelease('B5', myDuration);   myNote ='b'+ noteLength;}    // ]
+    if (event.data == 'P'){  synth.triggerAttackRelease('A5', myDuration);   myNote = myChord + 'a'+ noteLength;}
+    if (event.data == 'Û'){  synth.triggerAttackRelease('A#5', myDuration);  myNote = myChord + '^a'+ noteLength;}    // [
+    if (event.data == 'Ý'){  synth.triggerAttackRelease('B5', myDuration);   myNote = myChord + 'b'+ noteLength;}    // ]
     
     
     
     
-    if (event.data == 'À'){  synth.triggerAttackRelease('C6', myDuration);  myNote ='c\''+ noteLength;}     //    `
-    if (event.data == '1'){  synth.triggerAttackRelease('C#6', myDuration);  myNote ='^c\''+ noteLength;}
-    if (event.data == '2'){  synth.triggerAttackRelease('D6', myDuration);  myNote ='d\''+ noteLength;}
-    if (event.data == '3'){  synth.triggerAttackRelease('D#6', myDuration);  myNote ='^d\''+ noteLength;}
-    if (event.data == '4'){  synth.triggerAttackRelease('E6', myDuration);  myNote ='e\''+ noteLength;}
-    if (event.data == '5'){  synth.triggerAttackRelease('F6', myDuration);  myNote ='f\''+ noteLength;}
-    if (event.data == '6'){  synth.triggerAttackRelease('F#6', myDuration);  myNote ='^f\''+ noteLength;}
-    if (event.data == '7'){  synth.triggerAttackRelease('G6', myDuration);  myNote ='g\''+ noteLength;}
-    if (event.data == '8'){  synth.triggerAttackRelease('G#6', myDuration);  myNote ='^g\''+ noteLength;}
-    if (event.data == '9'){  synth.triggerAttackRelease('A6', myDuration);  myNote ='a\''+ noteLength;}
-    if (event.data == '0'){  synth.triggerAttackRelease('A#6', myDuration);  myNote ='^a\''+ noteLength;}
-    if (event.data == '½'){  synth.triggerAttackRelease('B6', myDuration);  myNote ='b\''+ noteLength;}   // -
-    if (event.data == '»'){  synth.triggerAttackRelease('C7', myDuration);  myNote ='c\'\''+ noteLength;}   // =
+    if (event.data == 'À'){  synth.triggerAttackRelease('C6', myDuration);  myNote = myChord + 'c\''+ noteLength;}     //    `
+    if (event.data == '1'){  synth.triggerAttackRelease('C#6', myDuration);  myNote = myChord + '^c\''+ noteLength;}
+    if (event.data == '2'){  synth.triggerAttackRelease('D6', myDuration);  myNote = myChord + 'd\''+ noteLength;}
+    if (event.data == '3'){  synth.triggerAttackRelease('D#6', myDuration);  myNote = myChord + '^d\''+ noteLength;}
+    if (event.data == '4'){  synth.triggerAttackRelease('E6', myDuration);  myNote = myChord + 'e\''+ noteLength;}
+    if (event.data == '5'){  synth.triggerAttackRelease('F6', myDuration);  myNote = myChord + 'f\''+ noteLength;}
+    if (event.data == '6'){  synth.triggerAttackRelease('F#6', myDuration);  myNote = myChord + '^f\''+ noteLength;}
+    if (event.data == '7'){  synth.triggerAttackRelease('G6', myDuration);  myNote = myChord + 'g\''+ noteLength;}
+    if (event.data == '8'){  synth.triggerAttackRelease('G#6', myDuration);  myNote = myChord + '^g\''+ noteLength;}
+    if (event.data == '9'){  synth.triggerAttackRelease('A6', myDuration);  myNote = myChord + 'a\''+ noteLength;}
+    if (event.data == '0'){  synth.triggerAttackRelease('A#6', myDuration);  myNote = myChord + '^a\''+ noteLength;}
+    if (event.data == '½'){  synth.triggerAttackRelease('B6', myDuration);  myNote = myChord + 'b\''+ noteLength;}   // -
+    if (event.data == '»'){  synth.triggerAttackRelease('C7', myDuration);  myNote = myChord + 'c\'\''+ noteLength;}   // =
    
    
    
@@ -344,14 +352,22 @@ function myPrep(event){
     for (myLoop = 1; myLoop <= myInterval/1000; myLoop++){
        myNote += 'z'
        document.myCounter ++;
-       if (document.myCounter % 4 == 0){myNote += '| '}
-       if (document.myCounter % 20 == 0){myNote += ']\n'}
+
+    if (document.myCounter % 4 == 0 ) {
+       if (document.myChordCount > 0){ myNote += ']'}
+        myNote += '| '
+    }
+       if (document.myCounter % 20 == 0){myNote += '\n'}
     }
     myNote += ' '
     
     document.myCounter ++;
-    if (document.myCounter % 4 == 0){myNote += '| '}
-    if (document.myCounter % 20 == 0){myNote += ']\n'}
+
+    if (document.myCounter % 4 == 0 ) {
+       if (document.myChordCount > 0){ myNote += ']'}
+        myNote += '| '
+    }
+    if (document.myCounter % 20 == 0){myNote += '\n'}
     
     //  ]
     
@@ -447,7 +463,7 @@ T:Notes
 M:C
 L:1/1
 K:C
-| </textarea><br>
+| </textarea><br><br>
 
 
 <input type=text value="Mobile Input use Firefox" onFocus="{
@@ -457,7 +473,7 @@ K:C
 }" onchange="{
    wssend(event)
    document.mobileInput = true;
-}">
+}"><br>
 
 
 
