@@ -26,8 +26,25 @@
 
 
 <script>
+var synthSettings = {
+			"oscillator": {
+				"detune": 0,
+				"type": "custom",
+				"partials" : [2, 1, 2, 2],
+				"phase": 0,
+				"volume": 0
+			},
+			"envelope": {
+				"attack": 0.005,
+				"decay": 0.3,
+				"sustain": 0.2,
+				"release": 1,
+			},
+			"portamento": 0.01,
+			"volume": -20
+		};
 
-var synth  = new Tone.Synth().toMaster();
+var synth  = new Tone.Synth(synthSettings).toMaster();
 
    //synth = Synth.createInstrument('synth'); // play with your synth guitar!
   // piano = Synth.createInstrument('piano'); // play with your synth guitar!
@@ -40,16 +57,17 @@ var synth  = new Tone.Synth().toMaster();
 
 
 <input id="myIOS" type=button value="iOS Start" onclick="{
-var synth = new Tone.Synth().toMaster();
+var synth = new Tone.Synth(synthSettings).toMaster();
 
 //play a middle 'C' for the duration of an 8th note
 synth.triggerAttackRelease('C4', '8n');
 
 }">
+
+
+
+
 <!--
-<input type=button value="synth.triggerAttackRelease('C4', '8n')" onclick="{
-synth.triggerAttackRelease('C4', '8n');
-}"><br>
 <input type=button value="synth.triggerAttackRelease('C#4', 0.5)" onclick="{
  synth.triggerAttackRelease('C#4', 0.2);
 }"><br>
@@ -100,23 +118,27 @@ synth.triggerAttackRelease('C4', '8n');
 
 -->
 
-<h2 aligne=center>MusicChat use your keypad2</h2>
+<h2 aligne=center>MusicChat use your keypad</h2>
 
-<input type=button value="C4" onClick="{wssend('A'); }">
-<input type=button value="#C4" onclick="{wssend('S')}">
-<input type=button value="D4" onclick="{wssend('D')}">
-<input type=button value="D#4" onclick="{wssend('F')}">
-<input type=button value="E4" onclick="{wssend('D')}">
-<input type=button value="F4" onclick="{wssend('F')}">
-<input type=button value="F#4" onclick="{wssend('G')}">
-<input type=button value="G4" onclick="{wssend('H')}">
-<input type=button value="G#4" onclick="{wssend('J')}">
-<input type=button value="A5" onclick="{wssend('L')}">
-<input type=button value="A#5" onclick="{wssend(';')}">
-<input type=button value="B5" onclick="{wssend(';')}">    
-<input type=button value="C5" onclick="{wssend('Q')}">
+<input type=button value=" " title="C4" onClick="{wssend('A'); }" style="height:80px; width:25px; color:black; background-color:white; position:relative; left:0px; top:0px; z-index:20;">
+<input type=button value=" " title="C#4"  onclick="{wssend('S')}" style="height:50px; width:20px; color:white; background-color:black; position:relative; left:-15px; top:-15px; z-index:50;">
+<input type=button value=" " title="D4" onclick="{wssend('D')}" style="height:80px; width:25px; color:black; background-color:white; position:relative; left:-30px; top:0px; z-index:20;">
+<input type=button value=" " title="D#4" onclick="{wssend('F')}" style="height:50px; width:20px; color:white; background-color:black; position:relative; left:-45px; top:-15px; z-index:50;">
+<input type=button value=" " title="E4" onclick="{wssend('G')}" style="height:80px; width:25px; color:black; background-color:white; position:relative; left:-60px; top:0px; z-index:20;">
+<input type=button value=" " title="F4" onclick="{wssend('H')}" style="height:80px; width:25px; color:black; background-color:white; position:relative; left:-65px; top:0px; z-index:20;">
+<input type=button value=" " title="F#4" onclick="{wssend('J')}" style="height:50px; width:20px; color:white; background-color:black; position:relative; left:-80px; top:-15px; z-index:50;">
+<input type=button value=" " title="G4" onclick="{wssend('K')}" style="height:80px; width:25px; color:black; background-color:white; position:relative; left:-95px; top:0px; z-index:20;">
+<input type=button value=" " title="G#4" onclick="{wssend('L')}" style="height:50px; width:20px; color:white; background-color:black; position:relative; left:-110px; top:-15px; z-index:50;">
+<input type=button value=" " title="A5" onclick="{wssend('º')}" style="height:80px; width:25px; color:black; background-color:white; position:relative; left:-125px; top:0px; z-index:20;">    <!-- ; -->
+<input type=button value=" " title="A#5" onclick="{wssend('Þ')}" style="height:50px; width:20px; color:white; background-color:black; position:relative; left:-140px; top:-15px; z-index:50;">   <!-- ' -->
+<input type=button value=" " title="B5" onclick="{wssend('Ü')}" style="height:80px; width:25px; color:black; background-color:white; position:relative; left:-155px; top:0px; z-index:20;">    <!-- \ -->
+<input type=button value=" " title="C5" onclick="{wssend('Q')}" style="height:80px; width:25px; color:black; background-color:white; position:relative; left:-160px; top:0px; z-index:20;">
 
-<br>
+
+
+ 
+
+<br><br>
 
 no keyboard ability to play 
 <input type=button value="A#3" onclick="{wssend('a')}">
@@ -174,6 +196,8 @@ no keyboard ability to play
    	if(String.fromCharCode(event.keyCode) == '¿'){ wssend('¿')  }     //  /  /
    	if(String.fromCharCode(event.keyCode) == 'Ü'){ wssend('Ü')  }     //   \ 
    	if(String.fromCharCode(event.keyCode) == '¼'){ wssend('¼')  }     //   ,
+   	
+   	
    	if(String.fromCharCode(event.keyCode) == 'Û'){ wssend('Û')  }     //   [
    	if(String.fromCharCode(event.keyCode) == 'Ý'){ wssend('Ý')  }     //   ] 
    	if(String.fromCharCode(event.keyCode) == '¾'){ wssend('¾')  }     // .
@@ -259,6 +283,9 @@ function myPrep(event){
  mySeconds = myTime.getTime()
  myInterval = mySeconds - document.myTimeOld  // in milliseconds
  document.myTimeOld = mySeconds
+ 
+ //alert(event.data)
+ 
  //alert(myInterval)
  //alert(mySeconds)
  //if ((myInterval < 100) && (oldEventData != event.data) && (myChord != '[' )){ 
@@ -273,6 +300,10 @@ if (myChord == '['  && document.myCounter > document.myChordCount+4 ){myChord = 
  if (myInterval > 300){ myDuration = 0.5;  noteLength = '/4 '; }
  if (myInterval > 500){ myDuration = 1;  noteLength = '/2 '; }
  if (myInterval > 1000){ myDuration = 6;  noteLength = ' '; }
+ if (myInterval > 2000){ synth.triggerAttackRelease('C2', '/32'); }
+ 
+ 
+
  
  oldEventData = event.data
  
@@ -349,15 +380,15 @@ if (myChord == '['  && document.myCounter > document.myChordCount+4 ){myChord = 
     
     
     //if (myInterval ){myNote += 'z'}
-    for (myLoop = 1; myLoop <= myInterval/1000; myLoop++){
+    for (myLoop = 1; myLoop <= myInterval/2000; myLoop++){
        myNote += 'z'
        document.myCounter ++;
 
-    if (document.myCounter % 4 == 0 ) {
-       if (document.myChordCount > 0){ myNote += ']'}
-        myNote += '| '
-    }
-       if (document.myCounter % 20 == 0){myNote += '\n'}
+      if (document.myCounter % 4 == 0 ) {
+         if (document.myChordCount > 0){ myNote += ']'}
+        // myNote += '| '
+      }
+      if (document.myCounter % 20 == 0){myNote += '\n'}
     }
     myNote += ' '
     
@@ -365,10 +396,11 @@ if (myChord == '['  && document.myCounter > document.myChordCount+4 ){myChord = 
 
     if (document.myCounter % 4 == 0 ) {
        if (document.myChordCount > 0){ myNote += ']'}
-        myNote += '| '
+       // myNote += '| '
     }
     if (document.myCounter % 20 == 0){myNote += '\n'}
     
+    if (document.myCounter > 1000){document.myCounter = 0} // reset the counter
     //  ]
     
    
@@ -541,6 +573,8 @@ K:C
 Use at your own risk, by Jeremy Ellis<br>
 
 audiosynth by Keith Whol <a href="https://github.com/keithwhor/audiosynth">https://github.com/keithwhor/audiosynth</a>
+
+Tone.js at github <a herf="https://github.com/Tonejs/Tone.js/">https://github.com/Tonejs/Tone.js/</a>
 abcjs by paul Rosen <a href="https://github.com/paulrosen/abcjs">https://github.com/paulrosen/abcjs</a>
 Website: <a href="http://rocksetta.com/">http://rocksetta.com/</a><br>
 Twitter: @rocksetta
