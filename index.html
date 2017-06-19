@@ -118,21 +118,22 @@ synth.triggerAttackRelease('C4', '8n');
 
 -->
 
-<h2 aligne=center>MusicChat use your keypad</h2>
+<h2 aligne=center>MusicChat</h2>
+Best to use your keyboard or the piano keys below.<br>
 
 <input type=button value=" " title="C4" onClick="{wssend('A'); }" style="height:80px; width:25px; color:black; background-color:white; position:relative; left:0px; top:0px; z-index:20;">
 <input type=button value=" " title="C#4"  onclick="{wssend('S')}" style="height:50px; width:20px; color:white; background-color:black; position:relative; left:-15px; top:-15px; z-index:50;">
 <input type=button value=" " title="D4" onclick="{wssend('D')}" style="height:80px; width:25px; color:black; background-color:white; position:relative; left:-30px; top:0px; z-index:20;">
 <input type=button value=" " title="D#4" onclick="{wssend('F')}" style="height:50px; width:20px; color:white; background-color:black; position:relative; left:-45px; top:-15px; z-index:50;">
 <input type=button value=" " title="E4" onclick="{wssend('G')}" style="height:80px; width:25px; color:black; background-color:white; position:relative; left:-60px; top:0px; z-index:20;">
-<input type=button value=" " title="F4" onclick="{wssend('H')}" style="height:80px; width:25px; color:black; background-color:white; position:relative; left:-65px; top:0px; z-index:20;">
-<input type=button value=" " title="F#4" onclick="{wssend('J')}" style="height:50px; width:20px; color:white; background-color:black; position:relative; left:-80px; top:-15px; z-index:50;">
-<input type=button value=" " title="G4" onclick="{wssend('K')}" style="height:80px; width:25px; color:black; background-color:white; position:relative; left:-95px; top:0px; z-index:20;">
-<input type=button value=" " title="G#4" onclick="{wssend('L')}" style="height:50px; width:20px; color:white; background-color:black; position:relative; left:-110px; top:-15px; z-index:50;">
-<input type=button value=" " title="A5" onclick="{wssend('º')}" style="height:80px; width:25px; color:black; background-color:white; position:relative; left:-125px; top:0px; z-index:20;">    <!-- ; -->
-<input type=button value=" " title="A#5" onclick="{wssend('Þ')}" style="height:50px; width:20px; color:white; background-color:black; position:relative; left:-140px; top:-15px; z-index:50;">   <!-- ' -->
-<input type=button value=" " title="B5" onclick="{wssend('Ü')}" style="height:80px; width:25px; color:black; background-color:white; position:relative; left:-155px; top:0px; z-index:20;">    <!-- \ -->
-<input type=button value=" " title="C5" onclick="{wssend('Q')}" style="height:80px; width:25px; color:black; background-color:white; position:relative; left:-160px; top:0px; z-index:20;">
+<input type=button value=" " title="F4" onclick="{wssend('H')}" style="height:80px; width:25px; color:black; background-color:white; position:relative; left:-67px; top:0px; z-index:20;">
+<input type=button value=" " title="F#4" onclick="{wssend('J')}" style="height:50px; width:20px; color:white; background-color:black; position:relative; left:-82px; top:-15px; z-index:50;">
+<input type=button value=" " title="G4" onclick="{wssend('K')}" style="height:80px; width:25px; color:black; background-color:white; position:relative; left:-97px; top:0px; z-index:20;">
+<input type=button value=" " title="G#4" onclick="{wssend('L')}" style="height:50px; width:20px; color:white; background-color:black; position:relative; left:-112px; top:-15px; z-index:50;">
+<input type=button value=" " title="A5" onclick="{wssend('º')}" style="height:80px; width:25px; color:black; background-color:white; position:relative; left:-127px; top:0px; z-index:20;">    <!-- ; -->
+<input type=button value=" " title="A#5" onclick="{wssend('Þ')}" style="height:50px; width:20px; color:white; background-color:black; position:relative; left:-142px; top:-15px; z-index:50;">   <!-- ' -->
+<input type=button value=" " title="B5" onclick="{wssend('Ü')}" style="height:80px; width:25px; color:black; background-color:white; position:relative; left:-157px; top:0px; z-index:20;">    <!-- \ -->
+<input type=button value=" " title="C5" onclick="{wssend('Q')}" style="height:80px; width:25px; color:black; background-color:white; position:relative; left:-164px; top:0px; z-index:20;">
 
 
 
@@ -140,7 +141,7 @@ synth.triggerAttackRelease('C4', '8n');
 
 <br><br>
 
-no keyboard ability to play 
+No keyboard ability to play 
 <input type=button value="A#3" onclick="{wssend('a')}">
 <br>
 
@@ -276,7 +277,7 @@ function myPrep(event){
 
      if (event.data == 'Time is up refresh to stay'){document.body.style.backgroundColor = "red";}
  
- myNote = '|'
+ myNote = ''
  myChord = ''
  
  myTime = new Date();
@@ -372,7 +373,7 @@ if (myChord == '['  && document.myCounter > document.myChordCount+4 ){myChord = 
    
    
    
-   document.getElementById('myDiv1').innerHTML = 'Pressed = '+event.data + ', note = ' + myNote +'<br>'+document.getElementById('myDiv1').innerHTML; 
+   document.getElementById('myDiv1').innerHTML = 'Pressed = '+event.data + ', note = ' + myNote //+'<br>'+document.getElementById('myDiv1').innerHTML; 
     //alert(event.data)
     
     //myNote = '|:D2|D2|D2|D2|'
@@ -448,7 +449,7 @@ ws.onmessage = function (event) {
    
     
 
-<h1>Websocket Output Here</h1>
+<h3>Websocket Output Here</h3>
 <input type=button value=Clear onclick="{
 
 document.getElementById('abc').value ='X:1\nT:Notes\nM:C\nL:1/1\nK:C\n| ' 
@@ -571,11 +572,13 @@ K:C
     
 <br><br>    
 Use at your own risk, by Jeremy Ellis<br>
+MusicSocket Github at <a href="https://github.com/hpssjellis/musicSocket">https://github.com/hpssjellis/musicSocket</a>
 
-audiosynth by Keith Whol <a href="https://github.com/keithwhor/audiosynth">https://github.com/keithwhor/audiosynth</a>
-
-Tone.js at github <a herf="https://github.com/Tonejs/Tone.js/">https://github.com/Tonejs/Tone.js/</a>
-abcjs by paul Rosen <a href="https://github.com/paulrosen/abcjs">https://github.com/paulrosen/abcjs</a>
+<!-- audiosynth by Keith Whol <a href="https://github.com/keithwhor/audiosynth">https://github.com/keithwhor/audiosynth</a> -->
+Thanks to the following <br>
+Tone.js at github <a herf="https://github.com/Tonejs/Tone.js/">https://github.com/Tonejs/Tone.js/</a><br>
+abcjs by Paul Rosen <a href="https://github.com/paulrosen/abcjs">https://github.com/paulrosen/abcjs</a><br>
+Websocket Hack by Jeremy Ellis <a href="https://github.com/hpssjellis/Particle-Spark-Core-Photon-Websocket-Hack">https://github.com/hpssjellis/Particle-Spark-Core-Photon-Websocket-Hack</a>
 Website: <a href="http://rocksetta.com/">http://rocksetta.com/</a><br>
 Twitter: @rocksetta
 
