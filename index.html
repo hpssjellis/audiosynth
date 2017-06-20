@@ -23,9 +23,26 @@
 <script src="Tone.min.js"></script>
 
 
+    
 
 
 <script>
+
+	
+	
+var myCool= new MouseEvent("keyup", {
+        view: window,
+        bubbles: true,
+        cancelable: true
+        /* whatever properties you want to give it */
+    })
+    
+    
+
+
+
+
+
 var synthSettings = {
 			"oscillator": {
 				"detune": 0,
@@ -406,13 +423,13 @@ if (myChord == '['  && document.myCounter > document.myChordCount+4 ){myChord = 
     
    
    
-    // alert(document.getElementById('myEdit').value)
+    document.getElementById('abc').dispatchEvent(myCool);
    if (document.getElementById('myEdit').value == 'edit'){ 
 
        document.getElementById('abc').value += myNote
-       if(document.mobileInput ==true){
-       document.getElementById('abc').focus()
-    }
+       //if(document.mobileInput ==true){
+      // document.getElementById('abc').dispatchEvent(myCool);
+    //}
    }
    
    
